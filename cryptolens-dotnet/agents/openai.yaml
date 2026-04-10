@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cryptolens .NET"
+  short_description: "Update the Cryptolens .NET SDK safely."
+  default_prompt: "Use $cryptolens-dotnet to update or debug the Cryptolens .NET SDK with current SKM.V3 APIs."
