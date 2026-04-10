@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cryptolens SDK Common"
+  short_description: "Apply shared Cryptolens SDK rules."
+  default_prompt: "Use $cryptolens-sdk-common to apply shared Cryptolens SDK guidance, especially machine-binding and node-locking assumptions."
