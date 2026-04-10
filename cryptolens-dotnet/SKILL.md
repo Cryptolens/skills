@@ -9,7 +9,7 @@ description: Work on the Cryptolens .NET SDK and .NET-specific license verificat
 
 Use this skill for work in the Cryptolens .NET SDK repository: [github.com/Cryptolens/cryptolens-dotnet](https://github.com/Cryptolens/cryptolens-dotnet).
 
-Treat GitHub as the primary source of truth. If a local checkout is also available, use it as a convenience for editing and validation. Start with [repo-map.md](references/repo-map.md), then open only the repo files needed for the task. Keep the SDK's public API stable unless the task explicitly asks for a breaking change.
+Treat GitHub as the primary source of truth. Do not assume the user has the repo cloned locally. If a local checkout is unavailable, search and inspect files directly in [github.com/Cryptolens/cryptolens-dotnet](https://github.com/Cryptolens/cryptolens-dotnet) by repo-relative path. If a local checkout is also available, use it as a convenience for editing and validation. Start with [repo-map.md](references/repo-map.md), then open only the repo files needed for the task. Keep the SDK's public API stable unless the task explicitly asks for a breaking change.
 
 Before adding or explaining machine-binding checks, read the shared Cryptolens rule in [licensing-invariants.md](../cryptolens-sdk-common/references/licensing-invariants.md).
 
@@ -22,8 +22,9 @@ If an SDK call returns a non-empty `message`, read the shared error table in [ap
 1. Classify the request before editing.
 2. Read the repo `README.md` first for installation, compatibility, and support caveats.
 3. Read [repo-map.md](references/repo-map.md) and route to the relevant `SKMv3`, `LicenseRelated`, or `UserAccountAuth` files.
-4. Treat `SKM.cs`, the `SKGL` namespace, and the README `Old examples` section as legacy compatibility material, not templates for new code.
-5. Keep code, docs, examples, and package guidance aligned in the same pass.
+4. If there is no local checkout, search and open the corresponding files in [github.com/Cryptolens/cryptolens-dotnet](https://github.com/Cryptolens/cryptolens-dotnet) instead of asking the user to clone the repo first.
+5. Treat `SKM.cs`, the `SKGL` namespace, and the README `Old examples` section as legacy compatibility material, not templates for new code.
+6. Keep code, docs, examples, and package guidance aligned in the same pass.
 
 ## Task Guide
 
@@ -81,7 +82,7 @@ Use `Cryptolens.Licensing/Cryptolens.Licensing.csproj` for package metadata, tar
 
 ## Validation
 
-If a local checkout is available, run validation from the repo root. If the repo is only available through GitHub, restrict the task to review, explanation, or documentation updates unless you also have a writable repository integration.
+If a local checkout is available, run validation from the repo root. If the repo is only available through GitHub, inspect and search the GitHub repository directly and restrict the task to review, explanation, or documentation updates unless you also have a writable repository integration.
 
 Prefer the smallest check that proves the change:
 

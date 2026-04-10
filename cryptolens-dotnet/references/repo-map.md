@@ -2,7 +2,7 @@
 
 Canonical repository: [github.com/Cryptolens/cryptolens-dotnet](https://github.com/Cryptolens/cryptolens-dotnet)
 
-Use repo-relative paths below. If a local checkout exists, those paths are relative to the repo root. If not, open the same paths on GitHub.
+Use repo-relative paths below. If a local checkout exists, those paths are relative to the repo root. If not, search and open the same paths directly in [github.com/Cryptolens/cryptolens-dotnet](https://github.com/Cryptolens/cryptolens-dotnet). Do not assume the repo is cloned locally.
 
 ## Main Files
 
