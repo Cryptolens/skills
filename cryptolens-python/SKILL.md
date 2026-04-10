@@ -17,14 +17,17 @@ Before adding or explaining floating licensing, read the shared floating-license
 
 If an SDK call returns a non-empty message string, read the shared error table in [api-error-messages.md](../cryptolens-sdk-common/references/api-error-messages.md) before diagnosing the issue.
 
+Before writing examples or support guidance for verification workflows, read [official-workflows.md](references/official-workflows.md) so the generated guidance matches the official Cryptolens docs, not just the repository README.
+
 ## Quick Start
 
 1. Classify the request before editing.
-2. Read the repo README first for user-facing verification flows and support caveats.
-3. Read `licensing.md` for method signatures and expected behavior.
-4. Open the implementation files named in [repo-map.md](references/repo-map.md).
-5. If the task touches legacy environments, inspect `cryptolens_python2.py` too.
-6. Keep code, docs, and examples aligned in the same pass.
+2. Read [official-workflows.md](references/official-workflows.md) first for the supported flows and doc-backed caveats.
+3. Read the repo README for Python-specific examples and support notes.
+4. Read `licensing.md` for method signatures and expected behavior.
+5. Open the implementation files named in [repo-map.md](references/repo-map.md).
+6. If the task touches legacy environments, inspect `cryptolens_python2.py` too.
+7. Keep code, docs, and examples aligned in the same pass.
 
 ## Task Guide
 
@@ -48,23 +51,38 @@ When writing sample code, wrappers, or integration snippets:
 - Make `product_id` user-supplied through a function argument, config value, environment variable, or clearly labeled placeholder such as `YOUR_PRODUCT_ID`.
 - Prefer the same treatment for other tenant-specific values such as access tokens, RSA public keys, and license keys.
 - For floating-license examples, default overdraft to `0` and only show `max_overdraft` with a value greater than `0` when the user explicitly wants overdraft behavior.
+- Reflect the official timing guidance from [official-workflows.md](references/official-workflows.md): key verification usually happens on app start, when the user changes the license key, and sometimes periodically.
 
 Update the README examples if the call pattern, arguments, or expected verification checks change.
 
 ### Examples, docs, and support fixes
 
-Use the repo `README.md` for the supported end-user flows:
+Use [official-workflows.md](references/official-workflows.md) as the primary source for supported flows and product-level guidance, then use the repo `README.md` and `licensing.md` to translate that guidance into Python-specific code.
+
+The official docs currently cover:
 
 - standard activation
 - offline activation with `.skm` files
 - floating licenses
 - trial keys
+- username/password user verification
+- event registration and analytics data collection
 - custom server endpoint
 - proxy and SSL troubleshooting
 
 Use `licensing.md` as the broader API reference. Align docs to the implementation, or implementation to docs, explicitly. Do not leave them drifting apart.
 
 For floating-license questions, point to [Cryptolens Documentation: Floating licenses](https://help.cryptolens.io/licensing-models/floating).
+
+For offline verification, prefer the official certificate model described in [official-workflows.md](references/official-workflows.md): signed activation responses can be cached, refreshed periodically, or delivered manually for air-gapped devices.
+
+For verified trials, follow the official flow in [official-workflows.md](references/official-workflows.md): create the trial key first, then activate it as usual, and use a separate trial-token setup when feature lock controls the trial duration.
+
+For user verification, follow the official flow in [official-workflows.md](references/official-workflows.md): use username/password to fetch licenses first, then activate the selected license only if machine-binding or node-locking is needed.
+
+For data collection, prefer the official event model in [official-workflows.md](references/official-workflows.md): use `AI.RegisterEvent`, include a useful feature name and either key or machine code, and reserve value/currency for transaction-style analytics.
+
+If the user asks about Unity, Rhino/Grasshopper, or adjacent plugin-host environments, use the adjacent-platform notes in [official-workflows.md](references/official-workflows.md) for support context, but do not copy .NET-specific API signatures into Python code.
 
 ### Python 2 and legacy hosts
 
@@ -97,3 +115,5 @@ Avoid live activation calls in automated validation unless the task explicitly p
 ## Resources
 
 Read [repo-map.md](references/repo-map.md) for the file map, common task routing, and repo-specific gotchas.
+
+Read [official-workflows.md](references/official-workflows.md) for the official documentation-backed flows and adjacent platform notes used by this skill.
