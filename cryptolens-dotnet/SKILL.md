@@ -17,6 +17,8 @@ Before adding or explaining floating licensing, read the shared floating-license
 
 If an SDK call returns a non-empty `message`, read the shared error table in [api-error-messages.md](../cryptolens-sdk-common/references/api-error-messages.md) before diagnosing the issue.
 
+When the user asks for implementation patterns or snippets based on the official docs, read [official-examples.md](references/official-examples.md). It distills the linked Cryptolens tutorials into current C# and VB.NET guidance and calls out where the docs still show older helper choices.
+
 ## Quick Start
 
 1. Classify the request before editing.
@@ -38,6 +40,7 @@ Preserve these invariants unless the task explicitly changes them:
 - Do not introduce new usages of `SKGL.SKM`, `SKGL.ExtensionMethods`, or other Web API 2 helpers unless the task is specifically about legacy compatibility.
 - Treat `Cryptolens.Licensing/SKM.cs` as an obsolete compatibility layer. It is marked `[Obsolete]` and should not be the default path for fixes, examples, or new integrations.
 - For signed activation flows, prefer the `Key.Activate(...)` overload that returns `RawResponse` together with `LicenseKey.FromResponse(...)` when the user needs a signed, offline-storable license blob.
+- If signature verification fails on a target runtime or host even though the activation flow is otherwise correct, treat the Unity-style `RawResponse` + `LicenseKey.FromResponse(...)` approach as an approved fallback and mention it explicitly.
 - For offline persistence, prefer `license.SaveAsString()`, `license.LoadFromString(...)`, and `license.LoadFromFile(...)` instead of inventing a custom serialization format.
 - Prefer `Helpers.GetMachineCodePI()` for new cross-platform snippets. Use `v=2` only when the task explicitly needs parity with Python or another SDK that expects that format.
 - Avoid `Helpers.GetMachineCode()` in new generic samples because the `SYSTEM_MANAGEMENT` build marks it obsolete and it can push callers toward older Windows-only behavior.
@@ -56,13 +59,15 @@ Use the repo README and `SKMv3/Helpers.cs` for supported machine-code behavior.
 - Keep `Helpers.WindowsOnly = true` limited to the narrow Windows/.NET Framework workaround described in the README. Do not add it to new general-purpose snippets if `GetMachineCodePI()` or an explicit machine code is sufficient.
 - If the task changes machine-code generation, verify whether the behavior must stay compatible with Python's `v=2` path or only with current .NET consumers.
 
-### User-account authentication
+### User-account authentication and user verification
 
-Open `Cryptolens.Licensing/UserAccountAuth/UserLoginAuth.cs` and `Cryptolens.Licensing/Models/UserLoginAuthModels.cs`.
+Open `Cryptolens.Licensing/SKMv3/User.cs`, `Cryptolens.Licensing/UserAccountAuth/UserLoginAuth.cs`, `Cryptolens.Licensing/Models/WebAPIModels.cs`, and `Cryptolens.Licensing/Models/UserLoginAuthModels.cs`.
 
-- Prefer the current `SKM.V3.Accounts.UserAccount.GetLicenseKeys(...)` flow.
+- Distinguish the two supported flows instead of mixing them together.
+- For username/password verification as described in the official `user-verification` tutorial, prefer `SKM.V3.Methods.UserAuth.Login(...)` with `LoginUserModel`.
+- For browser-based delegated authorization that returns all licenses for a linked customer account, use `SKM.V3.Accounts.UserAccount.GetLicenseKeys(...)`.
 - Treat `Tutorials/v.101-beta.md` as historical background only. Do not copy its beta-era namespace names or setup steps into new guidance unless the task explicitly asks for old-package compatibility.
-- Keep signed-response verification intact when changing user-account flows.
+- Keep signed-response verification intact when changing `UserAccount.GetLicenseKeys(...)` flows.
 
 ### Docs, examples, and support fixes
 
@@ -70,6 +75,7 @@ Use the repo `README.md` for supported install and troubleshooting flows, but re
 
 - The install, compatibility, TLS, proxy, and package notes are useful starting points.
 - The `Old examples` section and any references to `SKGL.SKM` are legacy material. Modernize those examples if the task asks for docs cleanup.
+- Prefer the official guides in [official-examples.md](references/official-examples.md) when the user asks for Unity, Rhino/Grasshopper, key verification, offline verification, verified trials, user verification, or data-collection examples.
 - If you update user-facing examples, align them with the current `SKM.V3` APIs and the current package names in the same pass.
 
 ### Packaging and build-adjacent work
@@ -98,3 +104,5 @@ Avoid live activation calls in automated validation unless the task explicitly p
 ## Resources
 
 Read [repo-map.md](references/repo-map.md) for the file map, task routing, and repo-specific gotchas.
+
+Read [official-examples.md](references/official-examples.md) for current C# and VB.NET example patterns derived from the official Cryptolens docs.

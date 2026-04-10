@@ -10,6 +10,7 @@ Use repo-relative paths below. If a local checkout exists, those paths are relat
 - `Cryptolens.Licensing/Cryptolens.Licensing.csproj`: NuGet metadata, target frameworks, `SYSTEM_MANAGEMENT`, and package dependencies
 - `Cryptolens.Licensing/SKMv3/Key.cs`: current Web API 3 license-key operations such as activate, get key, create key, trial key, deactivate, and key updates
 - `Cryptolens.Licensing/SKMv3/Helpers.cs`: current helper surface for machine codes, platform detection, password hashing, floating-license calculations, and machine checks
+- `Cryptolens.Licensing/SKMv3/User.cs`: username/password user verification methods such as `UserAuth.Login(...)`
 - `Cryptolens.Licensing/LicenseRelated/LicenseKey.cs`: core `LicenseKey` model, `FromResponse(...)`, refresh logic, and data-object mutation helpers
 - `Cryptolens.Licensing/ExtensionMethods.cs`: fluent helpers for `LicenseKey`, offline save/load, signature checks, feature checks, and machine matching
 - `Cryptolens.Licensing/Models/WebAPIModels.cs`: request and response models for Web API 3 methods
@@ -25,7 +26,8 @@ Use repo-relative paths below. If a local checkout exists, those paths are relat
 - Offline license-file issue: inspect `LicenseRelated/LicenseKey.cs` plus `ExtensionMethods.cs`.
 - Machine-code or cross-platform issue: inspect `SKMv3/Helpers.cs`, the README compatibility notes, and the project file's `SYSTEM_MANAGEMENT` settings.
 - Floating-license behavior: inspect `SKMv3/Helpers.cs`, `SKMv3/Key.cs`, and the shared `floating-licenses.md` reference in `cryptolens-sdk-common`.
-- User-account authentication issue: inspect `UserAccountAuth/UserLoginAuth.cs` and `Models/UserLoginAuthModels.cs`.
+- Username/password user-verification issue: inspect `SKMv3/User.cs` and `Models/WebAPIModels.cs`.
+- Browser-based customer-account authorization issue: inspect `UserAccountAuth/UserLoginAuth.cs` and `Models/UserLoginAuthModels.cs`.
 - Packaging or dependency change: inspect `Cryptolens.Licensing.csproj` plus the README install section.
 - Legacy-compatibility question: inspect `SKM.cs`, `SKGL` extension methods, and old README examples, but keep them fenced off from new-code guidance.
 
