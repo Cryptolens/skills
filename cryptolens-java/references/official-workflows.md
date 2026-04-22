@@ -2,6 +2,8 @@
 
 Use this file when writing examples, troubleshooting steps, or support guidance so the Java skill stays aligned with the official Cryptolens docs instead of only mirroring the repository README.
 
+Treat `https://app.cryptolens.io/docs/api/v3/llms.txt` and `https://help.cryptolens.io/llms.txt` as the canonical external doc inputs. This file is a Java-shaped distillation of that material, adjusted to match the current repository and SDK surface.
+
 ## Source Pages
 
 - Java getting started: <https://help.cryptolens.io/getting-started/java>

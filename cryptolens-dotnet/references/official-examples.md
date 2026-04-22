@@ -1,6 +1,10 @@
 # Official Examples
 
-Use this file when the user asks for guidance based on these official docs:
+Use this file when the user asks for guidance based on these official docs.
+
+Treat `https://app.cryptolens.io/docs/api/v3/llms.txt` and `https://help.cryptolens.io/llms.txt` as the canonical external doc inputs. This file is a .NET-shaped distillation of that material, adjusted to match the current repository and SDK surface.
+
+Use this file together with these official docs:
 
 - [Unity 3D / Mono](https://help.cryptolens.io/getting-started/unity)
 - [Rhino 3D / Grasshopper](https://help.cryptolens.io/getting-started/rhino-ceros-3d-grashopper)

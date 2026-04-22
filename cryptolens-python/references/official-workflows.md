@@ -2,6 +2,8 @@
 
 Use these official docs as the primary source for supported licensing flows and expected behavior. Use the GitHub repo and `licensing.md` to map those workflows onto Python-specific APIs.
 
+Treat `https://app.cryptolens.io/docs/api/v3/llms.txt` and `https://help.cryptolens.io/llms.txt` as the canonical external doc inputs. This file is a Python-shaped distillation of that material, adjusted to match the current repository and SDK surface.
+
 ## Core Docs
 
 - [Key verification](https://help.cryptolens.io/examples/key-verification)
