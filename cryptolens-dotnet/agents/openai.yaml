@@ -1,4 +1,4 @@
 interface:
-  display_name: "Cryptolens .NET"
-  short_description: "Update the Cryptolens .NET SDK safely."
-  default_prompt: "Use $cryptolens-dotnet to update or debug the Cryptolens .NET SDK with current SKM.V3 APIs."
+  display_name: "Cryptolens .NET Licensing"
+  short_description: "Devolens/Cryptolens .NET software licensing, key verification, and offline licensing guidance."
+  default_prompt: "Use $cryptolens-dotnet to update or debug the Cryptolens .NET SDK, especially license key verification, offline licensing, floating-license flows, and current SKM.V3 APIs."

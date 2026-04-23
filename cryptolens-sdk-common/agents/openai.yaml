@@ -1,4 +1,4 @@
 interface:
-  display_name: "Cryptolens SDK Common"
-  short_description: "Apply shared Cryptolens SDK rules."
-  default_prompt: "Use $cryptolens-sdk-common to apply shared Cryptolens SDK guidance, especially machine-binding and node-locking assumptions."
+  display_name: "Cryptolens Licensing Common"
+  short_description: "Shared software licensing rules for offline verification, floating licenses, trials, and machine binding."
+  default_prompt: "Use $cryptolens-sdk-common to apply shared Cryptolens software licensing guidance, especially key verification, offline fallback, floating licenses, trials, and node-locking assumptions."

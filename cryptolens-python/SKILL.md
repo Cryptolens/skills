@@ -1,6 +1,6 @@
 ---
 name: cryptolens-python
-description: Work on the Cryptolens Python SDK and Python-specific license verification integrations. Use when Codex needs to inspect, modify, review, test, or explain the `Cryptolens/cryptolens-python` repository, especially key activation, offline license files, floating licenses, trial keys, machine-code generation, Python 2 compatibility, packaging, examples, or troubleshooting Python activation, signature, proxy, or SSL issues.
+description: Work on the Cryptolens Python SDK and Python-specific software licensing integrations. Use when Codex needs to inspect, modify, review, test, or explain the `Cryptolens/cryptolens-python` repository, especially license key verification, key activation, offline license verification, offline license files, floating licenses, trial licenses, machine binding, node-locking, Python 2 compatibility, packaging, examples, or troubleshooting Python activation, signature, proxy, or SSL issues.
 ---
 
 # Cryptolens Python

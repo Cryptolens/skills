@@ -1,6 +1,6 @@
 ---
 name: cryptolens-dotnet
-description: Work on the Cryptolens .NET SDK and .NET-specific license verification integrations. Use when Codex needs to inspect, modify, review, test, or explain the `Cryptolens/cryptolens-dotnet` repository, especially Web API 3 activation, offline license files, cross-platform machine-code generation, floating licenses, user-account authentication, NuGet packaging, .NET Framework versus .NET Standard behavior, or troubleshooting proxy, TLS, Unity, Mono, or Windows-only SDK issues.
+description: Work on the Cryptolens .NET SDK and .NET-specific software licensing integrations. Use when Codex needs to inspect, modify, review, test, or explain the `Cryptolens/cryptolens-dotnet` repository, especially license key verification, offline license verification, cached license files, Web API 3 activation, floating licenses, trial licenses, machine binding, node-locking, user-account authentication, NuGet packaging, .NET Framework versus .NET Standard behavior, or troubleshooting proxy, TLS, Unity, Mono, or Windows-only SDK issues.
 ---
 
 # Cryptolens .NET

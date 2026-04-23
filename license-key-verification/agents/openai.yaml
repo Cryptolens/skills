@@ -1,0 +1,4 @@
+interface:
+  display_name: "License Key Verification"
+  short_description: "Devolens/Cryptolens key verification, activation, signature checks, and machine-binding guidance."
+  default_prompt: "Use $license-key-verification to design or debug Devolens/Cryptolens license key verification, then route to the relevant language skill for implementation details."

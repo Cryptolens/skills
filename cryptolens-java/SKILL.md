@@ -1,6 +1,6 @@
 ---
 name: cryptolens-java
-description: Work on the Cryptolens Java SDK and Java-specific license verification integrations. Use when Codex needs to inspect, modify, review, test, or explain the `Cryptolens/cryptolens-java` repository, especially key activation, get-key flows, offline license strings, machine-code generation, floating licenses, trial keys, user-verification integrations, license-server routing, data objects, analytics events, Maven packaging, or migration away from deprecated `io.cryptolens.legacy.*` classes.
+description: Work on the Cryptolens Java SDK and Java-specific software licensing integrations. Use when Codex needs to inspect, modify, review, test, or explain the `Cryptolens/cryptolens-java` repository, especially license key verification, key activation, get-key flows, offline license verification, offline license strings, floating licenses, trial licenses, machine binding, node-locking, user-verification integrations, license-server routing, data objects, analytics events, Maven packaging, or migration away from deprecated `io.cryptolens.legacy.*` classes.
 ---
 
 # Cryptolens Java

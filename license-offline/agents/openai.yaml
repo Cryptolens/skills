@@ -1,0 +1,4 @@
+interface:
+  display_name: "Offline License Verification"
+  short_description: "Devolens/Cryptolens offline license verification, cached licenses, and air-gapped activation flows."
+  default_prompt: "Use $license-offline to design or debug Devolens/Cryptolens offline license verification, then route to the relevant language skill for implementation details."

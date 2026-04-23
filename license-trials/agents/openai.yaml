@@ -1,0 +1,4 @@
+interface:
+  display_name: "Trial Licenses"
+  short_description: "Devolens/Cryptolens trial-license and verified-trial guidance across SDKs."
+  default_prompt: "Use $license-trials to design or debug Devolens/Cryptolens trial-license flows, then route to the relevant language skill for implementation details."

@@ -6,12 +6,21 @@ The language-specific skills depend on `cryptolens-sdk-common` for shared licens
 
 ## Skill Layout
 
+Canonical implementation skills:
+
 - `cryptolens-sdk-common`: shared/common skill with cross-language licensing rules and reference material.
 - `cryptolens-dotnet`: .NET-specific guidance, repo mapping, and examples.
 - `cryptolens-java`: Java-specific guidance, repo mapping, and examples.
 - `cryptolens-python`: Python-specific guidance, repo mapping, and examples.
 
-`cryptolens-sdk-common` is both shared infrastructure for the language-specific skills and a valid standalone skill when the task is language-agnostic, such as explaining product-wide licensing behavior or cross-SDK verification assumptions.
+Intent-based alias skills:
+
+- `license-offline`: entrypoint for offline license verification, cached licenses, and air-gapped/manual activation flows.
+- `license-key-verification`: entrypoint for general license key verification and activation flows.
+- `license-floating`: entrypoint for floating-license behavior and overdraft questions.
+- `license-trials`: entrypoint for verified trials and trial-key workflows.
+
+`cryptolens-sdk-common` is both shared infrastructure for the language-specific skills and a valid standalone skill when the task is language-agnostic, such as explaining product-wide licensing behavior or cross-SDK verification assumptions. The `license-*` skills are thin SEO/discoverability entrypoints that route into the canonical skills rather than replacing them.
 
 ## Dependency Model
 
@@ -19,11 +28,12 @@ Use the skills as one bundle unless you explicitly repackage them.
 
 The intended dependency flow is:
 
-1. Read `cryptolens-sdk-common` for shared rules such as machine-binding assumptions, floating-license defaults, offline fallback, and API error interpretation.
-2. Read the language-specific skill for repo-aware guidance, current API usage, and implementation details.
-3. Use the language-specific reference files to translate the shared/product guidance into SDK-specific examples and troubleshooting steps.
+1. If the task arrives through an alias such as `license-offline` or `license-floating`, use that skill only as a router into the canonical skills.
+2. Read `cryptolens-sdk-common` for shared rules such as machine-binding assumptions, floating-license defaults, offline fallback, and API error interpretation.
+3. Read the language-specific skill for repo-aware guidance, current API usage, and implementation details.
+4. Use the language-specific reference files to translate the shared/product guidance into SDK-specific examples and troubleshooting steps.
 
-If you copy only one language folder without `cryptolens-sdk-common`, the existing cross-skill relative links will break.
+If you copy only one language folder without `cryptolens-sdk-common`, the existing cross-skill relative links will break. The alias skills also depend on the canonical bundle and should be installed with it.
 
 ## Canonical External Docs
 

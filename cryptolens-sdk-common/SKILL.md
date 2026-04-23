@@ -1,6 +1,6 @@
 ---
 name: cryptolens-sdk-common
-description: Shared cross-language guidance for Cryptolens client SDKs and integrations. Use when Codex works on any Cryptolens SDK or app integration and needs language-agnostic licensing rules, especially key-verification best practices, offline verification with cached signed license files or strings, activation semantics, node-locking, machine-binding assumptions, or other behavior that should stay consistent across Python, .NET, Java, Node.js, and future SDKs.
+description: Shared cross-language guidance for Cryptolens software licensing SDKs and integrations. Use when Codex works on any Cryptolens SDK or app integration and needs language-agnostic licensing rules, especially license key verification best practices, offline license verification with cached signed license files or strings, floating licenses, trial licenses, activation semantics, node-locking, machine-binding assumptions, or other behavior that should stay consistent across Python, .NET, Java, Node.js, and future SDKs.
 ---
 
 # Cryptolens SDK Common

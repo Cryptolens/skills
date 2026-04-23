@@ -1,4 +1,4 @@
 interface:
-  display_name: "Cryptolens Java"
-  short_description: "Update the Cryptolens Java SDK safely."
-  default_prompt: "Use $cryptolens-java to update or debug the Cryptolens Java SDK, especially activation, offline licensing, or machine-binding flows."
+  display_name: "Cryptolens Java Licensing"
+  short_description: "Devolens/Cryptolens Java software licensing, key verification, and offline licensing guidance."
+  default_prompt: "Use $cryptolens-java to update or debug the Cryptolens Java SDK, especially license key verification, offline licensing, floating-license flows, trials, or machine-binding behavior."

@@ -1,4 +1,4 @@
 interface:
-  display_name: "Cryptolens Python"
-  short_description: "Update the Cryptolens Python SDK safely."
-  default_prompt: "Use $cryptolens-python to update or debug the Cryptolens Python SDK, especially activation, offline licensing, or machine-binding flows."
+  display_name: "Cryptolens Python Licensing"
+  short_description: "Devolens/Cryptolens Python software licensing, key verification, and offline licensing guidance."
+  default_prompt: "Use $cryptolens-python to update or debug the Cryptolens Python SDK, especially license key verification, offline licensing, floating-license flows, trials, or machine-binding behavior."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Floating Licenses"
+  short_description: "Devolens/Cryptolens floating-license activation, overdraft, and seat-timing guidance."
+  default_prompt: "Use $license-floating to design or debug Devolens/Cryptolens floating-license flows, then route to the relevant language skill for implementation details."
