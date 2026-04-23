@@ -1,0 +1,21 @@
+{
+  "name": "devolens",
+  "version": "1.0.0",
+  "description": "Devolens (formerly Cryptolens) licensing skills: .NET, Java, and Python SDK guidance plus shared cross-SDK rules for license-key verification, offline caching, floating licenses, and verified trials.",
+  "author": {
+    "name": "Devolens",
+    "url": "https://devolens.com"
+  },
+  "homepage": "https://devolens.com",
+  "repository": "https://github.com/Cryptolens/skills",
+  "license": "MIT",
+  "keywords": [
+    "devolens",
+    "cryptolens",
+    "licensing",
+    "license-key",
+    "offline",
+    "floating-license",
+    "trials"
+  ]
+}

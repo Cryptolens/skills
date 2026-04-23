@@ -1,0 +1,14 @@
+{
+  "name": "devolens",
+  "owner": {
+    "name": "Devolens",
+    "url": "https://devolens.com"
+  },
+  "plugins": [
+    {
+      "name": "devolens",
+      "source": "./",
+      "description": "Devolens (formerly Cryptolens) licensing skills for .NET, Java, Python, and cross-SDK shared rules. Installs eight skills in one bundle: cryptolens-sdk-common, cryptolens-dotnet, cryptolens-java, cryptolens-python, license-offline, license-key-verification, license-floating, license-trials."
+    }
+  ]
+}

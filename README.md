@@ -1,19 +1,29 @@
 # Cryptolens Skills
 
-This repository is a bundle of Cryptolens skills intended to be used together.
+This repository is a bundle of Cryptolens skills intended to be used together, packaged as a Claude Code plugin and distributed through a plugin marketplace.
 
-The language-specific skills depend on `cryptolens-sdk-common` for shared licensing rules, cross-language invariants, and doc-backed guidance that should stay aligned across SDKs. The current layout is bundle-first rather than individually packaged by default, so the `../cryptolens-sdk-common/...` links are intentional.
+The language-specific skills depend on `cryptolens-sdk-common` for shared licensing rules, cross-language invariants, and doc-backed guidance that should stay aligned across SDKs. The current layout is bundle-first rather than individually packaged by default, so the `../cryptolens-sdk-common/...` links are intentional — all skills live as siblings inside `skills/`.
+
+## Repository Layout
+
+```
+.claude-plugin/
+  marketplace.json   # Claude Code plugin marketplace manifest
+  plugin.json        # Claude Code plugin manifest
+skills/              # the eight skills, auto-discovered by Claude Code
+scripts/             # Codex installer
+```
 
 ## Skill Layout
 
-Canonical implementation skills:
+Canonical implementation skills (under `skills/`):
 
 - `cryptolens-sdk-common`: shared/common skill with cross-language licensing rules and reference material.
 - `cryptolens-dotnet`: .NET-specific guidance, repo mapping, and examples.
 - `cryptolens-java`: Java-specific guidance, repo mapping, and examples.
 - `cryptolens-python`: Python-specific guidance, repo mapping, and examples.
 
-Intent-based alias skills:
+Intent-based alias skills (under `skills/`):
 
 - `license-offline`: entrypoint for offline license verification, cached licenses, and air-gapped/manual activation flows.
 - `license-key-verification`: entrypoint for general license key verification and activation flows.
