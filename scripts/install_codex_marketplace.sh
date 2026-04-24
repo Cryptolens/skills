@@ -41,6 +41,140 @@ SKILLS=(
   "license-payment-automation"
 )
 
+relative_plugin_path() {
+  local plugin_source_path="${MARKETPLACE_DEST}/plugins/devolens"
+
+  if [[ "${plugin_source_path}" == "${HOME}/"* ]]; then
+    plugin_source_path="./${plugin_source_path#"${HOME}/"}"
+  fi
+
+  printf '%s\n' "${plugin_source_path}"
+}
+
+write_devolens_marketplace_file() {
+  local plugin_source_path="$1"
+
+  cat >"${USER_MARKETPLACE_FILE}" <<JSON
+{
+  "name": "devolens",
+  "interface": {
+    "displayName": "Devolens"
+  },
+  "plugins": [
+    {
+      "name": "devolens",
+      "source": {
+        "source": "local",
+        "path": "${plugin_source_path}"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}
+JSON
+}
+
+register_devolens_plugin() {
+  local plugin_source_path
+  plugin_source_path="$(relative_plugin_path)"
+
+  mkdir -p "$(dirname -- "${USER_MARKETPLACE_FILE}")"
+
+  if [[ ! -e "${USER_MARKETPLACE_FILE}" ]]; then
+    write_devolens_marketplace_file "${plugin_source_path}"
+    echo "Created Codex marketplace entry:"
+    echo "  ${USER_MARKETPLACE_FILE}"
+    return
+  fi
+
+  if ! command -v python3 >/dev/null 2>&1; then
+    echo "User marketplace file already exists and python3 is unavailable, so it was left unchanged:"
+    echo "  ${USER_MARKETPLACE_FILE}"
+    echo
+    echo "Add this Devolens plugin source manually if it does not appear in Codex Plugin Directory:"
+    echo "  ${plugin_source_path}"
+    return
+  fi
+
+  if ! python3 - "${USER_MARKETPLACE_FILE}" "${plugin_source_path}" <<'PY'
+import json
+import os
+import shutil
+import sys
+import tempfile
+
+marketplace_path, plugin_source_path = sys.argv[1], sys.argv[2]
+
+entry = {
+    "name": "devolens",
+    "source": {
+        "source": "local",
+        "path": plugin_source_path,
+    },
+    "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL",
+    },
+    "category": "Developer Tools",
+}
+
+with open(marketplace_path, "r", encoding="utf-8") as f:
+    marketplace = json.load(f)
+
+if not isinstance(marketplace, dict):
+    raise SystemExit("marketplace.json must contain a JSON object")
+
+plugins = marketplace.setdefault("plugins", [])
+if not isinstance(plugins, list):
+    raise SystemExit("marketplace.json field 'plugins' must be a list")
+
+for plugin in plugins:
+    if isinstance(plugin, dict) and plugin.get("name") == "devolens":
+        print("Devolens plugin entry already exists in:")
+        print(f"  {marketplace_path}")
+        raise SystemExit(0)
+
+plugins.append(entry)
+
+backup_path = f"{marketplace_path}.bak"
+counter = 1
+while os.path.exists(backup_path):
+    counter += 1
+    backup_path = f"{marketplace_path}.bak.{counter}"
+
+shutil.copy2(marketplace_path, backup_path)
+
+directory = os.path.dirname(marketplace_path) or "."
+fd, temp_path = tempfile.mkstemp(
+    prefix=f"{os.path.basename(marketplace_path)}.",
+    suffix=".tmp",
+    dir=directory,
+)
+
+with os.fdopen(fd, "w", encoding="utf-8") as f:
+    json.dump(marketplace, f, indent=2)
+    f.write("\n")
+
+os.replace(temp_path, marketplace_path)
+
+print("Registered Devolens in existing Codex marketplace file:")
+print(f"  {marketplace_path}")
+print("Backup:")
+print(f"  {backup_path}")
+PY
+  then
+    echo "Could not update existing user marketplace file; leaving it unchanged:"
+    echo "  ${USER_MARKETPLACE_FILE}"
+    echo
+    echo "Devolens marketplace file:"
+    echo "  ${MARKETPLACE_DEST}/.agents/plugins/marketplace.json"
+  fi
+}
+
 if [[ ! -f "${SOURCE_MARKETPLACE}" ]]; then
   echo "Missing Codex marketplace metadata: ${SOURCE_MARKETPLACE}" >&2
   exit 1
@@ -88,45 +222,7 @@ else
   fi
 fi
 
-mkdir -p "$(dirname -- "${USER_MARKETPLACE_FILE}")"
-
-if [[ -e "${USER_MARKETPLACE_FILE}" ]]; then
-  echo "User marketplace file already exists; leaving it unchanged:"
-  echo "  ${USER_MARKETPLACE_FILE}"
-  echo
-  echo "Devolens marketplace file:"
-  echo "  ${MARKETPLACE_DEST}/.agents/plugins/marketplace.json"
-else
-  plugin_source_path="${MARKETPLACE_DEST}/plugins/devolens"
-  if [[ "${plugin_source_path}" == "${HOME}/"* ]]; then
-    plugin_source_path="./${plugin_source_path#"${HOME}/"}"
-  fi
-
-  cat >"${USER_MARKETPLACE_FILE}" <<JSON
-{
-  "name": "devolens",
-  "interface": {
-    "displayName": "Devolens"
-  },
-  "plugins": [
-    {
-      "name": "devolens",
-      "source": {
-        "source": "local",
-        "path": "${plugin_source_path}"
-      },
-      "policy": {
-        "installation": "AVAILABLE",
-        "authentication": "ON_INSTALL"
-      },
-      "category": "Developer Tools"
-    }
-  ]
-}
-JSON
-  echo "Created Codex marketplace entry:"
-  echo "  ${USER_MARKETPLACE_FILE}"
-fi
+register_devolens_plugin
 
 echo
 echo "Install complete."
