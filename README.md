@@ -1,6 +1,6 @@
-# Cryptolens Skills
+# Devolens (formerly Cryptolens) Skills
 
-This repository is a bundle of Cryptolens skills intended to be used together, packaged for Claude Code and Codex plugin marketplace installs.
+This repository is a bundle of Devolens (formerly Cryptolens) skills intended to be used together, packaged for Claude Code and Codex plugin marketplace installs.
 
 The language-specific skills depend on `cryptolens-sdk-common` for shared licensing rules, cross-language invariants, and doc-backed guidance that should stay aligned across SDKs. The current layout is bundle-first rather than individually packaged by default, so the `../cryptolens-sdk-common/...` links are intentional — all skills live as siblings inside `skills/`.
 
@@ -89,7 +89,7 @@ If you copy only one language folder without `cryptolens-sdk-common`, the existi
 
 ## Canonical External Docs
 
-These local skills distill and adapt the official Cryptolens documentation. Treat these two `llms.txt` endpoints as the canonical external documentation inputs for the skill set:
+These local skills distill and adapt the official Devolens (formerly Cryptolens) documentation. Treat these two `llms.txt` endpoints as the canonical external documentation inputs for the skill set:
 
 - [Web API 3 docs `llms.txt`](https://app.cryptolens.io/docs/api/v3/llms.txt)
 - [Help center `llms.txt`](https://help.cryptolens.io/llms.txt)
