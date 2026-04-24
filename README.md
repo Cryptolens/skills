@@ -71,6 +71,10 @@ Intent-based alias skills (under `skills/`):
 - `license-key-verification`: entrypoint for general license key verification and activation flows.
 - `license-floating`: entrypoint for floating-license behavior and overdraft questions.
 - `license-trials`: entrypoint for verified trials and trial-key workflows.
+- `license-feature-gates`: entrypoint for feature-gated licensing, feature templates, and entitlement checks.
+- `license-subscriptions`: entrypoint for subscription expiry checks, renewals, cancellations, and grace periods.
+- `license-key-generation`: entrypoint for backend `CreateKey` provisioning and license delivery flows.
+- `license-payment-automation`: entrypoint for Stripe, n8n, Zapier, webhook, and external payment-provider automation.
 
 `cryptolens-sdk-common` is both shared infrastructure for the language-specific skills and a valid standalone skill when the task is language-agnostic, such as explaining product-wide licensing behavior or cross-SDK verification assumptions. The `license-*` skills are thin SEO/discoverability entrypoints that route into the canonical skills rather than replacing them.
 

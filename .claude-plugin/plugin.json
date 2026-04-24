@@ -1,7 +1,7 @@
 {
   "name": "devolens",
   "version": "1.0.0",
-  "description": "Devolens (formerly Cryptolens) licensing skills: .NET, Java, and Python SDK guidance plus shared cross-SDK rules for license-key verification, offline caching, floating licenses, and verified trials.",
+  "description": "Devolens (formerly Cryptolens) licensing skills: .NET, Java, and Python SDK guidance plus shared rules and outcome routers for license-key verification, offline caching, floating licenses, verified trials, feature gates, subscriptions, key generation, and payment automation.",
   "author": {
     "name": "Devolens",
     "url": "https://devolens.com"
@@ -16,6 +16,13 @@
     "license-key",
     "offline",
     "floating-license",
-    "trials"
+    "trials",
+    "feature-gates",
+    "subscriptions",
+    "key-generation",
+    "payment-automation",
+    "stripe",
+    "n8n",
+    "zapier"
   ]
 }

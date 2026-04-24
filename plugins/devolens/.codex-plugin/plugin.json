@@ -1,7 +1,7 @@
 {
   "name": "devolens",
   "version": "1.0.0",
-  "description": "Devolens licensing skills for license key verification, offline license verification, floating licenses, trials, and Cryptolens SDK integrations.",
+  "description": "Devolens licensing skills for license key verification, offline license verification, floating licenses, trials, feature gates, subscriptions, key generation, payment automation, and Cryptolens SDK integrations.",
   "author": {
     "name": "Devolens",
     "url": "https://devolens.com"
@@ -16,13 +16,20 @@
     "license-key-verification",
     "offline-license-verification",
     "floating-licenses",
-    "trial-licenses"
+    "trial-licenses",
+    "feature-gates",
+    "subscription-licensing",
+    "license-key-generation",
+    "payment-automation",
+    "stripe",
+    "n8n",
+    "zapier"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Devolens Licensing",
     "shortDescription": "Software licensing skills for Codex.",
-    "longDescription": "Adds Devolens licensing guidance for license key verification, offline fallback, floating licenses, trials, and .NET, Java, and Python SDK integrations.",
+    "longDescription": "Adds Devolens licensing guidance for license key verification, offline fallback, floating licenses, trials, feature-gated licensing, subscriptions, backend key generation, payment automation, and .NET, Java, and Python SDK integrations.",
     "developerName": "Devolens",
     "category": "Developer Tools",
     "capabilities": [
@@ -30,8 +37,11 @@
     ],
     "websiteURL": "https://devolens.com",
     "defaultPrompt": [
-      "Add offline license verification.",
       "Add license key verification.",
+      "Add offline license verification.",
+      "Add feature-gated licensing.",
+      "Create license keys from my backend.",
+      "Integrate Devolens with Stripe, n8n, Zapier, or another payment provider.",
       "Explain floating license behavior."
     ],
     "brandColor": "#0F766E"

@@ -35,6 +35,10 @@ SKILLS=(
   "license-key-verification"
   "license-floating"
   "license-trials"
+  "license-feature-gates"
+  "license-subscriptions"
+  "license-key-generation"
+  "license-payment-automation"
 )
 
 if [[ ! -f "${SOURCE_MARKETPLACE}" ]]; then

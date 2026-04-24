@@ -1,0 +1,4 @@
+interface:
+  display_name: "Subscription Licensing"
+  short_description: "Devolens/Cryptolens subscription expiry checks, renewals, cancellations, and grace periods."
+  default_prompt: "Use $license-subscriptions to add or review Devolens/Cryptolens subscription licensing, then route to the relevant language skill or Web API docs for implementation details."

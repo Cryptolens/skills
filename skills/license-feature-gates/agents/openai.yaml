@@ -1,0 +1,4 @@
+interface:
+  display_name: "Feature-Gated Licensing"
+  short_description: "Devolens/Cryptolens feature flags, product editions, feature templates, and entitlement checks."
+  default_prompt: "Use $license-feature-gates to add or review Devolens/Cryptolens feature-gated licensing, then route to the relevant language skill or Web API docs for implementation details."

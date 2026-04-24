@@ -1,0 +1,4 @@
+interface:
+  display_name: "Payment Automation"
+  short_description: "Devolens/Cryptolens Stripe, n8n, Zapier, webhook, and external-provider license automation."
+  default_prompt: "Use $license-payment-automation to design or review a Devolens/Cryptolens payment-to-license automation flow."

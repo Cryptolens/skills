@@ -1,0 +1,4 @@
+interface:
+  display_name: "License Key Generation"
+  short_description: "Devolens/Cryptolens backend CreateKey, license provisioning, and payment-success delivery flows."
+  default_prompt: "Use $license-key-generation to create or review a Devolens/Cryptolens backend license-key provisioning flow."
