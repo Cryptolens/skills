@@ -14,6 +14,7 @@ Then route to the language-specific skill that matches the task:
 - .NET: `cryptolens-dotnet`
 - Python: `cryptolens-python`
 - Java: `cryptolens-java`
+- unsupported language or no matching SDK skill: route through `cryptolens-sdk-common` and the Web API 3 HTTP docs instead of inventing SDK APIs
 - no language chosen yet: stay in `cryptolens-sdk-common` until the target SDK or platform is clear
 
 Use the local reference files as distilled guidance, but treat these as the canonical external docs:

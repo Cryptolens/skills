@@ -82,8 +82,9 @@ The intended dependency flow is:
 
 1. If the task arrives through an alias such as `license-offline` or `license-floating`, use that skill only as a router into the canonical skills.
 2. Read `cryptolens-sdk-common` for shared rules such as machine-binding assumptions, floating-license defaults, offline fallback, and API error interpretation.
-3. Read the language-specific skill for repo-aware guidance, current API usage, and implementation details.
-4. Use the language-specific reference files to translate the shared/product guidance into SDK-specific examples and troubleshooting steps.
+3. If a matching language-specific skill exists, read it for repo-aware guidance, current API usage, and implementation details.
+4. If no language-specific skill exists for the target stack, stay in `cryptolens-sdk-common` and use Web API 3 over HTTPS instead of inventing SDK APIs.
+5. Use the language-specific reference files to translate the shared/product guidance into SDK-specific examples and troubleshooting steps when a matching SDK skill exists.
 
 If you copy only one language folder without `cryptolens-sdk-common`, the existing cross-skill relative links will break. The alias skills also depend on the canonical bundle and should be installed with it.
 
@@ -93,6 +94,8 @@ These local skills distill and adapt the official Devolens (formerly Cryptolens)
 
 - [Web API 3 docs `llms.txt`](https://app.cryptolens.io/docs/api/v3/llms.txt)
 - [Help center `llms.txt`](https://help.cryptolens.io/llms.txt)
+
+For unsupported languages or direct HTTP integrations, use the full documentation inputs: [Web API 3 docs `llms-full.txt`](https://app.cryptolens.io/docs/api/v3/llms-full.txt) and [Help center `llms-full.txt`](https://help.cryptolens.io/llms-full.txt).
 
 The local `official-workflows.md` and `official-examples.md` files are not competing sources of truth. They are language-shaped derivatives that condense the official docs into guidance that matches the current SDK repositories.
 

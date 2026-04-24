@@ -1,6 +1,6 @@
 ---
 name: cryptolens-sdk-common
-description: Shared cross-language guidance for Cryptolens software licensing SDKs and integrations. Use when Codex works on any Cryptolens SDK or app integration and needs language-agnostic licensing rules, especially license key verification best practices, offline license verification with cached signed license files or strings, floating licenses, trial licenses, activation semantics, node-locking, machine-binding assumptions, or other behavior that should stay consistent across Python, .NET, Java, Node.js, and future SDKs.
+description: Shared cross-language guidance for Cryptolens software licensing SDKs, direct Web API 3 HTTP integrations, and unsupported-language fallbacks. Use when Codex works on any Cryptolens SDK or app integration and needs language-agnostic licensing rules, especially license key verification best practices, offline license verification with cached signed license files or strings, floating licenses, trial licenses, activation semantics, node-locking, machine-binding assumptions, or behavior that should stay consistent across Python, .NET, Java, Node.js, direct HTTP clients, and future SDKs.
 ---
 
 # Cryptolens SDK Common
@@ -10,6 +10,19 @@ description: Shared cross-language guidance for Cryptolens software licensing SD
 Use this skill for rules that should stay consistent across Cryptolens SDKs.
 
 Start with [licensing-invariants.md](references/licensing-invariants.md) and [offline-fallback.md](references/offline-fallback.md), and treat those rules as the default unless a language-specific repo clearly documents different behavior.
+
+## Unsupported Languages And Direct HTTP API
+
+If there is no language-specific Cryptolens/Devolens skill for the user's stack, do not invent SDK-specific APIs.
+
+Use the Web API 3 HTTP endpoints directly and translate the licensing flow into normal HTTPS requests for the target language.
+
+Use these full documentation sources for endpoint-level details:
+
+- `https://app.cryptolens.io/docs/api/v3/llms-full.txt`
+- `https://help.cryptolens.io/llms-full.txt`
+
+Preserve the shared invariants in this skill: signature/RSA verification where supported, correct access-token permissions, machine-binding behavior, offline fallback rules, and API error handling.
 
 ## Core Rule
 
