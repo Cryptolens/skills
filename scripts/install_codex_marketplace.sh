@@ -5,6 +5,7 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd -- "${SCRIPT_DIR}/.." && pwd)"
 
 CODEX_HOME="${CODEX_HOME:-${HOME}/.codex}"
+CODEX_CONFIG="${CODEX_CONFIG:-${CODEX_HOME}/config.toml}"
 MARKETPLACE_NAME="devolens"
 MARKETPLACE_PARENT="${CODEX_HOME}/marketplaces"
 MARKETPLACE_DEST="${DEVOLENS_CODEX_MARKETPLACE_DIR:-${MARKETPLACE_PARENT}/${MARKETPLACE_NAME}}"
@@ -76,6 +77,85 @@ write_devolens_marketplace_file() {
   ]
 }
 JSON
+}
+
+register_codex_marketplace_config() {
+  if ! command -v python3 >/dev/null 2>&1; then
+    return 1
+  fi
+
+  python3 - "${CODEX_CONFIG}" "${MARKETPLACE_DEST}" <<'PY'
+import os
+import re
+import shutil
+import sys
+import tempfile
+
+config_path, marketplace_source = sys.argv[1], sys.argv[2]
+section_name = "marketplaces.devolens"
+
+escaped_source = marketplace_source.replace("\\", "\\\\").replace('"', '\\"')
+replacement = (
+    f"[{section_name}]\n"
+    'source_type = "local"\n'
+    f'source = "{escaped_source}"\n'
+)
+
+if os.path.exists(config_path):
+    with open(config_path, "r", encoding="utf-8") as f:
+        original = f.read()
+else:
+    original = ""
+
+pattern = re.compile(
+    rf"(?ms)^\[{re.escape(section_name)}\]\n(?:(?!^\[).*\n?)*"
+)
+
+if pattern.search(original):
+    updated = pattern.sub(replacement, original)
+else:
+    prefix = original
+    if prefix and not prefix.endswith("\n"):
+        prefix += "\n"
+    if prefix and not prefix.endswith("\n\n"):
+        prefix += "\n"
+    updated = prefix + replacement
+
+if updated == original:
+    print("Codex marketplace config already contains Devolens:")
+    print(f"  {config_path}")
+    raise SystemExit(0)
+
+os.makedirs(os.path.dirname(config_path) or ".", exist_ok=True)
+
+if os.path.exists(config_path):
+    backup_path = f"{config_path}.bak"
+    counter = 1
+    while os.path.exists(backup_path):
+        counter += 1
+        backup_path = f"{config_path}.bak.{counter}"
+    shutil.copy2(config_path, backup_path)
+else:
+    backup_path = ""
+
+directory = os.path.dirname(config_path) or "."
+fd, temp_path = tempfile.mkstemp(
+    prefix=f"{os.path.basename(config_path)}.",
+    suffix=".tmp",
+    dir=directory,
+)
+
+with os.fdopen(fd, "w", encoding="utf-8") as f:
+    f.write(updated)
+
+os.replace(temp_path, config_path)
+
+print("Registered Devolens marketplace in Codex config:")
+print(f"  {config_path}")
+if backup_path:
+    print("Backup:")
+    print(f"  {backup_path}")
+PY
 }
 
 register_devolens_plugin() {
@@ -222,7 +302,11 @@ else
   fi
 fi
 
-register_devolens_plugin
+if ! register_codex_marketplace_config; then
+  echo "Could not update Codex config marketplace registry."
+  echo "Falling back to the legacy personal marketplace file."
+  register_devolens_plugin
+fi
 
 echo
 echo "Install complete."

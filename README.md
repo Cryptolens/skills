@@ -52,7 +52,7 @@ Install the Devolens Codex marketplace with the raw script URL:
 curl -fsSL https://raw.githubusercontent.com/Cryptolens/skills/main/install.sh | bash
 ```
 
-The installer places a local marketplace at `$CODEX_HOME/marketplaces/devolens`, defaulting to `~/.codex/marketplaces/devolens` when `CODEX_HOME` is not set. It registers the `devolens` plugin in `~/.agents/plugins/marketplace.json`; if that file already exists, the installer adds the Devolens entry alongside existing plugins and creates a backup first. Restart Codex, open Plugin Directory, then install `Devolens Licensing` (`devolens`).
+The installer places a local marketplace at `$CODEX_HOME/marketplaces/devolens`, defaulting to `~/.codex/marketplaces/devolens` when `CODEX_HOME` is not set. It registers the marketplace in `$CODEX_HOME/config.toml` so Codex can show `Devolens` as a marketplace source. On older setups where the config registry cannot be updated, it falls back to the legacy `~/.agents/plugins/marketplace.json` path. Restart Codex, open Plugin Directory, choose `Devolens`, then install `Devolens Licensing` (`devolens`).
 
 The Codex installer builds the plugin's `skills/` directory from the canonical `skills/` bundle during installation. Keep `skills/` as the single source of truth.
 
