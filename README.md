@@ -1,6 +1,6 @@
 # Cryptolens Skills
 
-This repository is a bundle of Cryptolens skills intended to be used together, packaged as a Claude Code plugin and distributed through a plugin marketplace.
+This repository is a bundle of Cryptolens skills intended to be used together, packaged for Claude Code and Codex plugin marketplace installs.
 
 The language-specific skills depend on `cryptolens-sdk-common` for shared licensing rules, cross-language invariants, and doc-backed guidance that should stay aligned across SDKs. The current layout is bundle-first rather than individually packaged by default, so the `../cryptolens-sdk-common/...` links are intentional — all skills live as siblings inside `skills/`.
 
@@ -10,9 +10,27 @@ The language-specific skills depend on `cryptolens-sdk-common` for shared licens
 .claude-plugin/
   marketplace.json   # Claude Code plugin marketplace manifest
   plugin.json        # Claude Code plugin manifest
-skills/              # the eight skills, auto-discovered by Claude Code
-scripts/             # Codex installer
+.agents/
+  plugins/
+    marketplace.json # Codex marketplace manifest
+install.sh           # Codex marketplace bootstrap installer
+plugins/
+  devolens/          # Codex plugin metadata
+skills/              # canonical skill bundle, auto-discovered by Claude Code
+scripts/             # installer helpers
 ```
+
+## Codex Marketplace
+
+Install the Devolens Codex marketplace with:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Cryptolens/skills/main/install.sh | bash
+```
+
+The installer places a local marketplace at `~/.codex/marketplaces/devolens`. If that marketplace already exists, the installer leaves it unchanged. Restart Codex, open Plugin Directory, then install `Devolens Licensing` (`devolens`).
+
+The Codex installer builds the plugin's `skills/` directory from the canonical `skills/` bundle during installation. Keep `skills/` as the single source of truth.
 
 ## Skill Layout
 

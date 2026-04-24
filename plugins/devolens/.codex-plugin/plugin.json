@@ -1,0 +1,39 @@
+{
+  "name": "devolens",
+  "version": "1.0.0",
+  "description": "Devolens licensing skills for license key verification, offline license verification, floating licenses, trials, and Cryptolens SDK integrations.",
+  "author": {
+    "name": "Devolens",
+    "url": "https://devolens.com"
+  },
+  "homepage": "https://help.cryptolens.io/getting-started/build-with-ai",
+  "repository": "https://github.com/Cryptolens/skills",
+  "license": "MIT",
+  "keywords": [
+    "devolens",
+    "cryptolens",
+    "software-licensing",
+    "license-key-verification",
+    "offline-license-verification",
+    "floating-licenses",
+    "trial-licenses"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Devolens Licensing",
+    "shortDescription": "Software licensing skills for Codex.",
+    "longDescription": "Adds Devolens licensing guidance for license key verification, offline fallback, floating licenses, trials, and .NET, Java, and Python SDK integrations.",
+    "developerName": "Devolens",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Write"
+    ],
+    "websiteURL": "https://devolens.com",
+    "defaultPrompt": [
+      "Add offline license verification.",
+      "Add license key verification.",
+      "Explain floating license behavior."
+    ],
+    "brandColor": "#0F766E"
+  }
+}

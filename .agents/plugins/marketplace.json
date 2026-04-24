@@ -1,0 +1,20 @@
+{
+  "name": "devolens",
+  "interface": {
+    "displayName": "Devolens"
+  },
+  "plugins": [
+    {
+      "name": "devolens",
+      "source": {
+        "source": "local",
+        "path": "./plugins/devolens"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}
