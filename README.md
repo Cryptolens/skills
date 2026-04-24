@@ -42,7 +42,11 @@ Restart Claude Code after installing so the new skills are discovered.
 
 ## Codex Marketplace
 
-Install the Devolens Codex marketplace with:
+Review the installer source at:
+
+https://github.com/Cryptolens/skills/blob/main/install.sh
+
+Install the Devolens Codex marketplace with the raw script URL:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/Cryptolens/skills/main/install.sh | bash

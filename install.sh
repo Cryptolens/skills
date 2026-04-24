@@ -23,12 +23,6 @@ require_command tar
 
 TMP_DIR="$(mktemp -d)"
 
-cleanup() {
-  rm -rf "${TMP_DIR}"
-}
-
-trap cleanup EXIT
-
 ARCHIVE_URL="https://github.com/${REPO_SLUG}/archive/refs/heads/${REPO_REF}.tar.gz"
 ARCHIVE_PATH="${TMP_DIR}/devolens-skills.tar.gz"
 
