@@ -20,6 +20,26 @@ skills/              # canonical skill bundle, auto-discovered by Claude Code
 scripts/             # installer helpers
 ```
 
+## Claude Code Marketplace
+
+Install the Devolens plugin from the GitHub marketplace with:
+
+```
+/plugin marketplace add Cryptolens/skills
+/plugin install devolens@devolens
+```
+
+Run both commands inside Claude Code. The first registers this repository as a plugin marketplace (reading `.claude-plugin/marketplace.json`); the second installs the `devolens` plugin, which bundles all skills under `skills/` (`cryptolens-sdk-common`, the language-specific skills, and the `license-*` aliases).
+
+To install from a local clone instead of GitHub, point `marketplace add` at the repository path:
+
+```
+/plugin marketplace add /path/to/skills
+/plugin install devolens@devolens
+```
+
+Restart Claude Code after installing so the new skills are discovered.
+
 ## Codex Marketplace
 
 Install the Devolens Codex marketplace with:
